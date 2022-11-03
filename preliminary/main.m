@@ -35,17 +35,24 @@ mid_gray = [.5 .5 .5];
 dark_gray = [.3 .3 .3];
 dark = [.1 .1 .1];
 
-%%%%%%%%%%%%%%
+%%%
 
 b = bar(x, y);
 hold on
+
+% dots %
 plot(pre_xs, pre_scores, 'o', 'MarkerEdgeColor', 'white', 'MarkerFaceColor', dark)
 hold on
 plot(post_xs, post_scores, 'o', 'MarkerEdgeColor', 'white', 'MarkerFaceColor', dark)
+%%%
+
+% lines connecting dots
 for i = 1:n
     hold on
     plot([1, 2], [pre_scores(i), post_scores(i)], Color=mid_gray, LineWidth=1)
 end
+%%%
+
 hold on
 errorbar([1, 2], y, [pre_std, post_std], ...
     'LineStyle','none', 'LineWidth', 1, 'Color', dark, 'CapSize', 8)
