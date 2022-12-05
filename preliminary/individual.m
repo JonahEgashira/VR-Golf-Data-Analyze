@@ -54,9 +54,3 @@ for i = 1:n
     text(xtips, ytips, labels, ...
         'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom', 'FontSize', 14)
 end
-         v   ---
-
-
-
-
-
