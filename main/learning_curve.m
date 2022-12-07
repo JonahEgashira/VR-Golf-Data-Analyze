@@ -1,16 +1,17 @@
 % [filename, pathname] = uigetfile('*.csv', 'Select a file');
 % fullpath = fullfile(pathname, filename);
-fullPath = 'C:\Users\jonah\VR-Golf-Data-Analyze\main\data\VR1_yasuji.csv';
+fullPath = 'C:\Users\jonah\VR-Golf-Data-Analyze\main\data\Real_yoshimi.csv';
 [~, name, ext] = fileparts(fullPath);
 fileName = [name ext];
 data = readmatrix(fullPath);
 is_VR = startsWith(fileName, 'VR');
 
-test_0h = data(:,1);
 practice_1 = data(:, [2,3,4,5]);
 practice_2 = data(:, [6,7,8,9]);
+test_0h = data(:,1);
 test_6h = data(:,10);
 test_24h = data(:,11);
+xs_test = 1:20;
 
 if is_VR
     practice_1 = abs(practice_1);
@@ -18,6 +19,7 @@ if is_VR
 end
 
 practice_trials = 80;
+set_trials = 20;
 
 y1 = reshape(practice_1, [practice_trials, 1]);
 y2 = reshape(practice_2, [practice_trials, 1]);
@@ -34,20 +36,28 @@ if is_VR
     x2(y2_outlier_indices) = [];
 end
 
+% Colors
 light_gray = [.8 .8 .8];
 dark_gray = [.3 .3 .3];
 
-plotFigure('1st Practice Set', x1, y1, practice_trials, dark_gray, light_gray)
-plotFigure('2nd Practice Set', x2, y2, practice_trials, dark_gray, light_gray)
 
-function plotFigure(titleText, xs, ys, trials, dark_gray, light_gray)
+% Plot practices
+plotFigure('1st Practice Set', x1, y1, practice_trials, dark_gray, light_gray, is_VR, false)
+plotFigure('2nd Practice Set', x2, y2, practice_trials, dark_gray, light_gray, is_VR, false)
+
+% Plot tests
+plotFigure('0h Test', xs_test, test_0h, set_trials, dark_gray, light_gray, false, true)
+plotFigure('6h Test', xs_test, test_6h, set_trials, dark_gray, light_gray, false, true)
+plotFigure('24h Test', xs_test, test_24h, set_trials, dark_gray, light_gray, false, true)
+
+function plotFigure(titleText, xs, ys, trials, dark_gray, light_gray, is_VR, is_Test)
     figure('Position', [1 1 900 500]);
     plotMarkerAndLine(xs, ys, dark_gray, dark_gray)
-    drawAdditionalLines(trials, light_gray)
+    drawAdditionalLines(trials, light_gray, is_VR)
     box off
     title(titleText)
-    addLabels
-    addLimits
+    addLabels(is_VR)
+    addLimits(is_VR, is_Test)
 end
 
 function plotMarkerAndLine(xs, ys, markerColor, lineColor)
@@ -56,20 +66,38 @@ function plotMarkerAndLine(xs, ys, markerColor, lineColor)
 end
 
 
-function drawAdditionalLines(n, lineColor)
-    line([0, n], [2, 2], 'Color', lineColor)
+function drawAdditionalLines(n, lineColor, is_VR)
+    middleLine = [0, 0];
+    if is_VR
+        middleLine = [2, 2];
+    end
+    line([0, n], middleLine, 'Color', lineColor)
     line([21, 21], [1, 3], 'Color', lineColor)
     line([41, 41], [1, 3], 'Color', lineColor)
     line([61, 61], [1, 3], 'Color', lineColor)
 end
 
-function addLabels()
-    xlabel('Trials')
-    ylabel('Distance(m)')
+function addLabels(is_VR)
+    if is_VR
+        xlabel('Trials')
+        ylabel('Distance(m)')
+    else
+        xlabel('Trials')
+        ylabel('Distance(score)')
+    end
+
 end
 
-function addLimits()
-    xlim([0, 80]);
-    ylim([1.0, 3.0]);
+function addLimits(is_VR, is_Test)
+    if is_VR
+        xlim([0, 80]);
+        ylim([1.0, 3.0]);
+    elseif is_Test
+        xlim([0, 20]);
+        ylim([-8, 8]);
+    else
+        xlim([0, 80]);
+        ylim([-8, 8]);
+    end
 end
 
