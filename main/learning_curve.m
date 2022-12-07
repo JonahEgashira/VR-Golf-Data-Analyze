@@ -1,8 +1,8 @@
-% [filename, pathname] = uigetfile('*.csv', 'Select a file');
-% fullpath = fullfile(pathname, filename);
-fullPath = 'C:\Users\jonah\VR-Golf-Data-Analyze\main\data\Real_yoshimi.csv';
-[~, name, ext] = fileparts(fullPath);
-fileName = [name ext];
+[fileName, pathName] = uigetfile('*.csv', 'Select a file');
+fullPath = fullfile(pathName, fileName);
+% fullPath = 'C:\Users\jonah\VR-Golf-Data-Analyze\main\data\Real_yoshimi.csv';
+% [~, name, ext] = fileparts(fullPath);
+% fileName = [name ext];
 data = readmatrix(fullPath);
 is_VR = startsWith(fileName, 'VR');
 
@@ -42,13 +42,18 @@ dark_gray = [.3 .3 .3];
 
 
 % Plot practices
-plotFigure('1st Practice Set', x1, y1, practice_trials, dark_gray, light_gray, is_VR, false)
-plotFigure('2nd Practice Set', x2, y2, practice_trials, dark_gray, light_gray, is_VR, false)
+plotFigure('1st Practice Session (4 Sets of 20 Trials)', ...
+    x1, y1, practice_trials, dark_gray, light_gray, is_VR, false)
+plotFigure('2nd Practice Session (4 Sets of 20 Trials)', ...
+    x2, y2, practice_trials, dark_gray, light_gray, is_VR, false)
 
 % Plot tests
-plotFigure('0h Test', xs_test, test_0h, set_trials, dark_gray, light_gray, false, true)
-plotFigure('6h Test', xs_test, test_6h, set_trials, dark_gray, light_gray, false, true)
-plotFigure('24h Test', xs_test, test_24h, set_trials, dark_gray, light_gray, false, true)
+plotFigure('0h Test', ...
+    xs_test, test_0h, set_trials, dark_gray, light_gray, false, true)
+plotFigure('6h Test', ...
+    xs_test, test_6h, set_trials, dark_gray, light_gray, false, true)
+plotFigure('24h Test', ...
+    xs_test, test_24h, set_trials, dark_gray, light_gray, false, true)
 
 function plotFigure(titleText, xs, ys, trials, dark_gray, light_gray, is_VR, is_Test)
     figure('Position', [1 1 900 500]);
@@ -68,13 +73,16 @@ end
 
 function drawAdditionalLines(n, lineColor, is_VR)
     middleLine = [0, 0];
+    setDivideLine = [-8, 8];
     if is_VR
         middleLine = [2, 2];
+        setDivideLine = [1, 3];
     end
+
     line([0, n], middleLine, 'Color', lineColor)
-    line([21, 21], [1, 3], 'Color', lineColor)
-    line([41, 41], [1, 3], 'Color', lineColor)
-    line([61, 61], [1, 3], 'Color', lineColor)
+    line([21, 21], setDivideLine, 'Color', lineColor)
+    line([41, 41], setDivideLine, 'Color', lineColor)
+    line([61, 61], setDivideLine, 'Color', lineColor)
 end
 
 function addLabels(is_VR)
