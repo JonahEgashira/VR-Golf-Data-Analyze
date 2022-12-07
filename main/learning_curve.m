@@ -3,6 +3,7 @@ fullPath = fullfile(pathName, fileName);
 % fullPath = 'C:\Users\jonah\VR-Golf-Data-Analyze\main\data\Real_yoshimi.csv';
 % [~, name, ext] = fileparts(fullPath);
 % fileName = [name ext];
+subjectName = extractAfter(fileName, '_');
 data = readmatrix(fullPath);
 is_VR = startsWith(fileName, 'VR');
 
@@ -39,7 +40,6 @@ end
 % Colors
 light_gray = [.8 .8 .8];
 dark_gray = [.3 .3 .3];
-
 
 % Plot practices
 plotFigure('1st Practice Session (4 Sets of 20 Trials)', ...
