@@ -37,25 +37,24 @@ end
 light_gray = [.8 .8 .8];
 dark_gray = [.3 .3 .3];
 
-% Practice1
-figure('Position', [1 1 900 500]);
-plot(x1, y1, 'o', MarkerFaceColor=dark_gray, MarkerEdgeColor='none')
-line(x1, y1, 'Color', dark_gray)
-drawAdditionalLines(practice_trials, light_gray)
-box off
-title('1st Practice Set')
-addLabels
-addLimits
+plotFigure('1st Practice Set', x1, y1, practice_trials, dark_gray, light_gray)
+plotFigure('2nd Practice Set', x2, y2, practice_trials, dark_gray, light_gray)
 
-% Practice2
-figure('Position', [1 1 900 500]);
-plot(x2, y2, 'o', MarkerFaceColor=dark_gray, MarkerEdgeColor='none')
-line(x2, y2, 'Color', dark_gray)
-drawAdditionalLines(practice_trials, light_gray)
-box off
-title('2nd Practice Set')
-addLabels
-addLimits
+function plotFigure(titleText, xs, ys, trials, dark_gray, light_gray)
+    figure('Position', [1 1 900 500]);
+    plotMarkerAndLine(xs, ys, dark_gray, dark_gray)
+    drawAdditionalLines(trials, light_gray)
+    box off
+    title(titleText)
+    addLabels
+    addLimits
+end
+
+function plotMarkerAndLine(xs, ys, markerColor, lineColor)
+    plot(xs, ys, 'o', MarkerSize=10, MarkerFaceColor=markerColor, MarkerEdgeColor='none')
+    line(xs, ys, 'LineWidth', 1, 'Color', lineColor)
+end
+
 
 function drawAdditionalLines(n, lineColor)
     line([0, n], [2, 2], 'Color', lineColor)
