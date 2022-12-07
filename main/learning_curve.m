@@ -63,6 +63,9 @@ function plotFigure(titleText, xs, ys, trials, dark_gray, light_gray, is_VR, is_
     title(titleText)
     addLabels(is_VR)
     addLimits(is_VR, is_Test)
+    h = gca;
+    set(h, 'FontSize', 16)
+    saveas(gcf, titleText, 'epsc')
 end
 
 function plotMarkerAndLine(xs, ys, markerColor, lineColor)
