@@ -4,6 +4,7 @@ fullPath = fullfile(pathName, fileName);
 % [~, name, ext] = fileparts(fullPath);
 % fileName = [name ext];
 subjectName = extractAfter(fileName, '_');
+subjectName = extractBefore(subjectName, '.');
 data = readmatrix(fullPath);
 is_VR = startsWith(fileName, 'VR');
 
@@ -42,20 +43,21 @@ light_gray = [.8 .8 .8];
 dark_gray = [.3 .3 .3];
 
 % Plot practices
-plotFigure('1st Practice Session (4 Sets of 20 Trials)', ...
+plotFigure('1st Practice Session (4 Sets of 20 Trials)', subjectName, ...
     x1, y1, practice_trials, dark_gray, light_gray, is_VR, false)
-plotFigure('2nd Practice Session (4 Sets of 20 Trials)', ...
+plotFigure('2nd Practice Session (4 Sets of 20 Trials)', subjectName, ...
     x2, y2, practice_trials, dark_gray, light_gray, is_VR, false)
 
 % Plot tests
-plotFigure('0h Test', ...
+plotFigure('0h Test', subjectName, ...
     xs_test, test_0h, set_trials, dark_gray, light_gray, false, true)
-plotFigure('6h Test', ...
+plotFigure('6h Test', subjectName, ...
     xs_test, test_6h, set_trials, dark_gray, light_gray, false, true)
-plotFigure('24h Test', ...
+plotFigure('24h Test', subjectName, ...
     xs_test, test_24h, set_trials, dark_gray, light_gray, false, true)
 
-function plotFigure(titleText, xs, ys, trials, dark_gray, light_gray, is_VR, is_Test)
+function plotFigure(titleText, subjectName, xs, ys, trials, ...
+    dark_gray, light_gray, is_VR, is_Test)
     figure('Position', [1 1 900 500]);
     plotMarkerAndLine(xs, ys, dark_gray, dark_gray)
     drawAdditionalLines(trials, light_gray, is_VR)
@@ -65,7 +67,13 @@ function plotFigure(titleText, xs, ys, trials, dark_gray, light_gray, is_VR, is_
     addLimits(is_VR, is_Test)
     h = gca;
     set(h, 'FontSize', 16)
-    saveas(gcf, titleText, 'epsc')
+    timeInfo = extractBefore(titleText, ' ');
+    display(subjectName)
+    saveFileName = strcat(subjectName, '_practice_', timeInfo);
+    if is_Test
+        saveFileName = strcat(subjectName, '_test_', timeInfo);
+    end
+    saveas(gcf, saveFileName, 'epsc')
 end
 
 function plotMarkerAndLine(xs, ys, markerColor, lineColor)

@@ -1,6 +1,7 @@
 [fileName, pathName] = uigetfile('*.csv', 'Select a file');
 fullPath = fullfile(pathName, fileName);
 subjectName = extractAfter(fileName, '_');
+subjectName = extractBefore(subjectName, '.');
 data = readmatrix(fullPath);
 
 test_0h = data(:,1);
@@ -48,3 +49,6 @@ labels = string(b.YData);
 text(xtips, ytips, labels, ...
   'HorizontalAlignment', 'center', ...
   'VerticalAlignment', 'bottom')
+
+saveFileName = strcat(subjectName, '_bar');
+saveas(gcf, saveFileName, 'epsc')
