@@ -6,6 +6,7 @@ fullPath = fullfile(pathName, fileName);
 subjectName = extractAfter(fileName, '_');
 subjectName = extractBefore(subjectName, '.');
 data = readmatrix(fullPath);
+shouldCompress = true;
 is_VR = startsWith(fileName, 'VR');
 
 practice_1 = data(:, [2,3,4,5]);
@@ -18,6 +19,12 @@ xs_test = 1:20;
 if is_VR
     practice_1 = abs(practice_1);
     practice_2 = abs(practice_2);
+end
+
+if shouldCompress && is_VR
+    practice_1 = arrayfun(@(x) compress(x), practice_1);
+    practice_2 = arrayfun(@(x) compress(x), practice_2);
+    is_VR = false;
 end
 
 practice_trials = 80;
@@ -68,7 +75,6 @@ function plotFigure(titleText, subjectName, xs, ys, trials, ...
     h = gca;
     set(h, 'FontSize', 16)
     timeInfo = extractBefore(titleText, ' ');
-    display(subjectName)
     saveFileName = strcat(subjectName, '_practice_', timeInfo);
     if is_Test
         saveFileName = strcat(subjectName, '_test_', timeInfo);
@@ -120,3 +126,27 @@ function addLimits(is_VR, is_Test)
     end
 end
 
+function y = compress(x)
+    sign = 1;
+    if x - 2.0 < 0
+        sign = -1;
+    end
+    diff = abs(2.0 - x);
+    if diff <= 0.05
+        y = 7 * sign;
+    elseif diff <= 0.10
+        y = 6 * sign;
+    elseif diff <= 0.15
+        y = 5 * sign;
+    elseif diff <= 0.25
+        y = 4 * sign;
+    elseif diff <= 0.375
+        y = 3 * sign;
+    elseif diff <= 0.5
+        y = 2 * sign;
+    elseif diff <= 0.625
+        y = 1 * sign;
+    else
+        y = 0;
+    end
+end
