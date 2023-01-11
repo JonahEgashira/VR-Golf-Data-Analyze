@@ -49,10 +49,10 @@ for i = 1:nbars
     err_x(i,:) = b(i).XEndPoints;
 end
 
-errorbar(err_x', y', std_y', 'k', 'linestyle', 'none', 'LineWidth', 1, 'CapSize', 8);
+errorbar(err_x', y, std_y', 'k', 'linestyle', 'none', 'LineWidth', 1, 'CapSize', 8);
 hold off
 
 legend('0h', '6h', '24h');
-ylabel('Dist from the target line (cm)')
+ylabel('Average distance from the target line (cm)')
 h = gca;
 set(h, 'FontSize', 14)
