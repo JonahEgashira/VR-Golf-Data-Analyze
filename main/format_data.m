@@ -193,8 +193,6 @@ for i = 1:REAL_number
     REAL_0h_24h(i) = delta_0h_24h;
 end
 
-% PLOT %
-
 % COLORS %
 light_gray = [.8 .8 .8];
 mid_gray = [.5 .5 .5];
