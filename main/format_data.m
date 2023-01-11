@@ -18,6 +18,18 @@ REAL_0h = zeros(trial_number, REAL_number);
 REAL_6h = zeros(trial_number, REAL_number);
 REAL_24h = zeros(trial_number, REAL_number);
 
+VR0_0h_diff = zeros(trial_number, VR0_number);
+VR0_6h_diff = zeros(trial_number, VR0_number);
+VR0_24h_diff = zeros(trial_number, VR0_number);
+VR1_0h_diff = zeros(trial_number, VR1_number);
+VR1_6h_diff = zeros(trial_number, VR1_number);
+VR1_24h_diff = zeros(trial_number, VR1_number);
+REAL_0h_diff = zeros(trial_number, REAL_number);
+REAL_6h_diff = zeros(trial_number, REAL_number);
+REAL_24h_diff = zeros(trial_number, REAL_number);
+
+target_scores = 200 * ones(1, 20);
+
 % DATA INPUT %
 for i = 1:VR0_number
     fileName = VR0_files(i).name;
@@ -29,6 +41,9 @@ for i = 1:VR0_number
     VR0_0h(1:trial_number, i:i) = scores_0h;
     VR0_6h(1:trial_number, i:i) = scores_6h;
     VR0_24h(1:trial_number, i:i) = scores_24h;
+    VR0_0h_diff(1:trial_number, i:i) = scores_0h - target_scores';
+    VR0_6h_diff(1:trial_number, i:i) = scores_6h - target_scores';
+    VR0_24h_diff(1:trial_number, i:i) = scores_24h - target_scores';
 end
 
 for i = 1:VR1_number
@@ -41,6 +56,9 @@ for i = 1:VR1_number
     VR1_0h(1:trial_number, i:i) = scores_0h;
     VR1_6h(1:trial_number, i:i) = scores_6h;
     VR1_24h(1:trial_number, i:i) = scores_24h;
+    VR1_0h_diff(1:trial_number, i:i) = scores_0h - target_scores';
+    VR1_6h_diff(1:trial_number, i:i) = scores_6h - target_scores';
+    VR1_24h_diff(1:trial_number, i:i) = scores_24h - target_scores';
 end
 
 for i = 1:REAL_number
@@ -53,9 +71,10 @@ for i = 1:REAL_number
     REAL_0h(1:trial_number, i:i) = scores_0h;
     REAL_6h(1:trial_number, i:i) = scores_6h;
     REAL_24h(1:trial_number, i:i) = scores_24h;
+    REAL_0h_diff(1:trial_number, i:i) = scores_0h - target_scores';
+    REAL_6h_diff(1:trial_number, i:i) = scores_6h - target_scores';
+    REAL_24h_diff(1:trial_number, i:i) = scores_24h - target_scores';
 end
-
-target_scores = 200 * ones(1, 20);
 
 % RESULTS %
 
@@ -66,6 +85,16 @@ VR1_0h_24h = zeros(1, VR1_number);
 REAL_0h_6h = zeros(1, REAL_number);
 REAL_0h_24h = zeros(1, REAL_number);
 
+VR0_0h_mean = zeros(1, VR0_number);
+VR0_6h_mean = zeros(1, VR0_number);
+VR0_24h_mean = zeros(1, VR0_number);
+VR1_0h_mean = zeros(1, VR1_number);
+VR1_6h_mean = zeros(1, VR1_number);
+VR1_24h_mean = zeros(1, VR1_number);
+REAL_0h_mean = zeros(1, REAL_number);
+REAL_6h_mean = zeros(1, REAL_number);
+REAL_24h_mean = zeros(1, REAL_number);
+
 %%%%%%%%%%%
 
 for i = 1:VR0_number
@@ -73,9 +102,9 @@ for i = 1:VR0_number
     scores_6h = VR0_6h(1:trial_number, i:i);
     scores_24h = VR0_24h(1:trial_number, i:i);
 
-    abs_0h = abs(target_scores - scores_0h);
-    abs_6h = abs(target_scores - scores_6h);
-    abs_24h = abs(target_scores - scores_24h);
+    abs_0h = abs(target_scores - scores_0h');
+    abs_6h = abs(target_scores - scores_6h');
+    abs_24h = abs(target_scores - scores_24h');
     
     sum_0h = sum(abs_0h);
     sum_6h = sum(abs_6h);
@@ -84,6 +113,10 @@ for i = 1:VR0_number
     mean_0h = mean(abs_0h);
     mean_6h = mean(abs_6h);
     mean_24h = mean(abs_24h);
+
+    VR0_0h_mean(i) = mean_0h;
+    VR0_6h_mean(i) = mean_6h;
+    VR0_24h_mean(i) = mean_24h;
 
     std_0h = std(abs_0h);
     std_6h = std(abs_6h);
@@ -101,9 +134,9 @@ for i = 1:VR1_number
     scores_6h = VR1_6h(1:trial_number, i:i);
     scores_24h = VR1_24h(1:trial_number, i:i);
 
-    abs_0h = abs(target_scores - scores_0h);
-    abs_6h = abs(target_scores - scores_6h);
-    abs_24h = abs(target_scores - scores_24h);
+    abs_0h = abs(target_scores - scores_0h');
+    abs_6h = abs(target_scores - scores_6h');
+    abs_24h = abs(target_scores - scores_24h');
     
     sum_0h = sum(abs_0h);
     sum_6h = sum(abs_6h);
@@ -112,6 +145,10 @@ for i = 1:VR1_number
     mean_0h = mean(abs_0h);
     mean_6h = mean(abs_6h);
     mean_24h = mean(abs_24h);
+
+    VR1_0h_mean(i) = mean_0h;
+    VR1_6h_mean(i) = mean_6h;
+    VR1_24h_mean(i) = mean_24h;
 
     std_0h = std(abs_0h);
     std_6h = std(abs_6h);
@@ -129,9 +166,9 @@ for i = 1:REAL_number
     scores_6h = REAL_6h(1:trial_number, i:i);
     scores_24h = REAL_24h(1:trial_number, i:i);
 
-    abs_0h = abs(target_scores - scores_0h);
-    abs_6h = abs(target_scores - scores_6h);
-    abs_24h = abs(target_scores - scores_24h);
+    abs_0h = abs(target_scores - scores_0h');
+    abs_6h = abs(target_scores - scores_6h');
+    abs_24h = abs(target_scores - scores_24h');
     
     sum_0h = sum(abs_0h);
     sum_6h = sum(abs_6h);
@@ -140,6 +177,10 @@ for i = 1:REAL_number
     mean_0h = mean(abs_0h);
     mean_6h = mean(abs_6h);
     mean_24h = mean(abs_24h);
+
+    REAL_0h_mean(i) = mean_0h;
+    REAL_6h_mean(i) = mean_6h;
+    REAL_24h_mean(i) = mean_24h;
 
     std_0h = std(abs_0h);
     std_6h = std(abs_6h);
@@ -152,9 +193,7 @@ for i = 1:REAL_number
     REAL_0h_24h(i) = delta_0h_24h;
 end
 
-
 % PLOT %
-
 
 % COLORS %
 light_gray = [.8 .8 .8];
@@ -169,39 +208,9 @@ VR1_mean_0h_24h = mean(VR1_0h_24h);
 REAL_mean_0h_6h = mean(REAL_0h_6h);
 REAL_mean_0h_24h = mean(REAL_0h_24h);
 
-x = categorical({'VR', 'VR + variance', 'Real'});
-x = reordercats(x, {'VR', 'VR + variance', 'Real'});
-
 means_0h_6h = [VR0_mean_0h_6h, VR1_mean_0h_6h, REAL_mean_0h_6h];
 means_0h_24h = [VR0_mean_0h_24h, VR1_mean_0h_24h, REAL_mean_0h_24h];
 std_0h_6h = [std(VR0_0h_6h), std(VR1_0h_6h), std(REAL_0h_6h)];
 std_0h_24h = [std(VR0_0h_24h), std(VR1_0h_24h), std(REAL_0h_24h)];
 
-y = [means_0h_6h; means_0h_24h];
-std_y = [std_0h_6h; std_0h_24h];
-
-% BAR %
-b = bar(x, y, 'FaceColor', 'flat');
-b(1).CData = light_gray;
-b(2).CData = dark_gray;
-
-%%%%%%%
-
-% ERRORBARS %
-
-% hold on
-% [ngroups, nbars] = size(y');
-% err_x = nan(nbars, ngroups);
-% for i = 1:nbars
-%     err_x(i,:) = b(i).XEndPoints;
-% end
-
-% errorbar(err_x', y', std_y', 'k', 'linestyle', 'none');
-% hold off
-
-%%%%%%%%%%%%%
-
-legend('Δ(6h - 0h)', 'Δ(24h - 0h)');
-ylabel('Score Improvements (%)')
-h = gca;
-set(h, 'FontSize', 14)
+save('scores');
