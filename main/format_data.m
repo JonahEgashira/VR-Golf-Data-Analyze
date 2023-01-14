@@ -2,11 +2,17 @@ VR0_files = dir("./data/VR0/*.csv");
 VR1_files = dir("./data/VR1/*.csv");
 REAL_files = dir("./data/REAL/*.csv");
 
-VR0_number = 6;
-VR1_number = 7;
-REAL_number = 6;
+VR0_file_size = size(VR0_files);
+VR1_file_size = size(VR1_files);
+REAL_file_size = size(REAL_files);
+
+VR0_number = VR0_file_size(1);
+VR1_number = VR1_file_size(1);
+REAL_number = REAL_file_size(1);
 
 trial_number = 20;
+practice_sets = 9;
+target_scores = 200 * ones(1, 20);
 
 VR0_0h = zeros(trial_number, VR0_number);
 VR0_6h = zeros(trial_number, VR0_number);
@@ -28,7 +34,10 @@ REAL_0h_diff = zeros(trial_number, REAL_number);
 REAL_6h_diff = zeros(trial_number, REAL_number);
 REAL_24h_diff = zeros(trial_number, REAL_number);
 
-target_scores = 200 * ones(1, 20);
+VR0_practice = zeros(trial_number, practice_sets);
+VR1_practice = zeros(trial_number, practice_sets);
+REAL_practice = zeros(trial_number, practice_sets);
+
 
 % DATA INPUT %
 for i = 1:VR0_number
@@ -44,6 +53,9 @@ for i = 1:VR0_number
     VR0_0h_diff(1:trial_number, i:i) = scores_0h - target_scores';
     VR0_6h_diff(1:trial_number, i:i) = scores_6h - target_scores';
     VR0_24h_diff(1:trial_number, i:i) = scores_24h - target_scores';
+
+    practice = abs(data(1:trial_number, 2:10)) * 100;
+    VR0_practice(:,:,i) = practice;
 end
 
 for i = 1:VR1_number
@@ -59,6 +71,9 @@ for i = 1:VR1_number
     VR1_0h_diff(1:trial_number, i:i) = scores_0h - target_scores';
     VR1_6h_diff(1:trial_number, i:i) = scores_6h - target_scores';
     VR1_24h_diff(1:trial_number, i:i) = scores_24h - target_scores';
+
+    practice = abs(data(1:trial_number, 2:10)) * 100;
+    VR1_practice(:,:,i) = practice;
 end
 
 for i = 1:REAL_number
@@ -74,6 +89,9 @@ for i = 1:REAL_number
     REAL_0h_diff(1:trial_number, i:i) = scores_0h - target_scores';
     REAL_6h_diff(1:trial_number, i:i) = scores_6h - target_scores';
     REAL_24h_diff(1:trial_number, i:i) = scores_24h - target_scores';
+
+    practice = abs(data(1:trial_number, 2:10)) * 100;
+    REAL_practice(:,:,i) = practice;
 end
 
 % RESULTS %
