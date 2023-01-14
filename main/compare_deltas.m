@@ -29,5 +29,7 @@ b(2).CData = dark_gray;
 
 legend('Δ(6h - 0h)', 'Δ(24h - 0h)');
 ylabel('Score Improvements (%)')
+title('Average Improvement Rates')
 h = gca;
 set(h, 'FontSize', 14)
+saveas(gcf,'delta_all','epsc')

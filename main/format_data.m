@@ -3,7 +3,7 @@ VR1_files = dir("./data/VR1/*.csv");
 REAL_files = dir("./data/REAL/*.csv");
 
 VR0_number = 6;
-VR1_number = 6;
+VR1_number = 7;
 REAL_number = 6;
 
 trial_number = 20;
@@ -122,8 +122,8 @@ for i = 1:VR0_number
     std_6h = std(abs_6h);
     std_24h = std(abs_24h);
 
-    delta_0h_6h = - (1 - sum_0h / sum_6h) * 100;
-    delta_0h_24h = - (1 - sum_0h / sum_24h) * 100;
+    delta_0h_6h = - (sum_6h / sum_0h - 1) * 100;
+    delta_0h_24h = - (sum_24h / sum_0h - 1) * 100;
 
     VR0_0h_6h(i) = delta_0h_6h;
     VR0_0h_24h(i) = delta_0h_24h;
@@ -154,8 +154,8 @@ for i = 1:VR1_number
     std_6h = std(abs_6h);
     std_24h = std(abs_24h);
 
-    delta_0h_6h = - (1 - sum_0h / sum_6h) * 100;
-    delta_0h_24h = - (1 - sum_0h / sum_24h) * 100;
+    delta_0h_6h = - (sum_6h / sum_0h - 1) * 100;
+    delta_0h_24h = - (sum_24h / sum_0h - 1) * 100;
 
     VR1_0h_6h(i) = delta_0h_6h;
     VR1_0h_24h(i) = delta_0h_24h;
@@ -186,8 +186,8 @@ for i = 1:REAL_number
     std_6h = std(abs_6h);
     std_24h = std(abs_24h);
 
-    delta_0h_6h = - (1 - sum_0h / sum_6h) * 100;
-    delta_0h_24h = - (1 - sum_0h / sum_24h) * 100;
+    delta_0h_6h = - (sum_6h / sum_0h - 1) * 100;
+    delta_0h_24h = - (sum_24h / sum_0h - 1) * 100;
 
     REAL_0h_6h(i) = delta_0h_6h;
     REAL_0h_24h(i) = delta_0h_24h;
