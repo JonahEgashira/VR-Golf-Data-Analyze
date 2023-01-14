@@ -32,4 +32,4 @@ ylabel('Score Improvements (%)')
 title('Average Improvement Rates')
 h = gca;
 set(h, 'FontSize', 14)
-saveas(gcf,'delta_all','epsc')
+saveas(gcf,'./data/figures/delta_all','epsc')

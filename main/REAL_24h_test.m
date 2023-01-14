@@ -1,13 +1,13 @@
 load('scores.mat')
 
-VR1_0h_abs = abs(VR1_0h_diff);
-VR1_0h_abs_each = mean(VR1_0h_abs, 2);
+REAL_24h_abs = abs(REAL_24h_diff);
+REAL_24h_abs_each = mean(REAL_24h_abs, 2);
 
 x = 1:20;
 
 
 figure('Position', [100 100 700 400]);
-plot(x, VR1_0h_abs_each', '-o', ...
+plot(x, REAL_24h_abs_each', '-o', ...
     'LineWidth', 2, ...
     'MarkerSize', 12, ...
     'MarkerFaceColor', dark_gray, ...
@@ -20,11 +20,11 @@ set(h, 'FontSize', 14)
 
 xlabel('Trials')
 ylabel('Distance from the target line (cm)')
-title('VR')
+title('Real')
 
-for i = 1:VR1_number
+for i = 1:REAL_number
     hold on
-    y = VR1_0h_abs(:,i);
+    y = REAL_24h_abs(:,i);
     plot(x, y', '-o', ...
     'MarkerSize', 8, ...
     'MarkerFaceColor', light_gray, ...
@@ -34,4 +34,4 @@ end
 
 hold off
 
-saveas(gcf,'./data/figures/VR1_0h_test','epsc')
+saveas(gcf,'./data/figures/REAL_24h_test','epsc')

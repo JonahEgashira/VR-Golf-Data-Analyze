@@ -38,4 +38,4 @@ title('REAL')
 ylim([-80, 80])
 h = gca;
 set(h, 'FontSize', 14)
-saveas(gcf,'REAL_delta','epsc')
+saveas(gcf,'./data/figures/REAL_delta','epsc')

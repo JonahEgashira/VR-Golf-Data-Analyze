@@ -43,4 +43,4 @@ ylim([0, 70])
 title('REAL')
 h = gca;
 set(h, 'FontSize', 14)
-saveas(gcf,'REAL_score','epsc')
+saveas(gcf,'./data/figures/REAL_score','epsc')

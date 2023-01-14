@@ -1,13 +1,13 @@
 load('scores.mat')
 
-VR1_0h_abs = abs(VR1_0h_diff);
-VR1_0h_abs_each = mean(VR1_0h_abs, 2);
+VR0_0h_abs = abs(VR0_0h_diff);
+VR0_0h_abs_each = mean(VR0_0h_abs, 2);
 
 x = 1:20;
 
 
 figure('Position', [100 100 700 400]);
-plot(x, VR1_0h_abs_each', '-o', ...
+plot(x, VR0_0h_abs_each', '-o', ...
     'LineWidth', 2, ...
     'MarkerSize', 12, ...
     'MarkerFaceColor', dark_gray, ...
@@ -22,9 +22,9 @@ xlabel('Trials')
 ylabel('Distance from the target line (cm)')
 title('VR')
 
-for i = 1:VR1_number
+for i = 1:VR0_number
     hold on
-    y = VR1_0h_abs(:,i);
+    y = VR0_0h_abs(:,i);
     plot(x, y', '-o', ...
     'MarkerSize', 8, ...
     'MarkerFaceColor', light_gray, ...
@@ -34,4 +34,4 @@ end
 
 hold off
 
-saveas(gcf,'./data/figures/VR1_0h_test','epsc')
+saveas(gcf,'./data/figures/VR0_0h_test','epsc')

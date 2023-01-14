@@ -43,4 +43,4 @@ title('VR')
 ylim([0, 70])
 h = gca;
 set(h, 'FontSize', 14)
-saveas(gcf,'VR0_score','epsc')
+saveas(gcf,'./data/figures/VR0_score','epsc')

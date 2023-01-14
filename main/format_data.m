@@ -194,6 +194,7 @@ for i = 1:REAL_number
 end
 
 % COLORS %
+white = [1 1 1];
 light_gray = [.8 .8 .8];
 mid_gray = [.5 .5 .5];
 dark_gray = [.3 .3 .3];

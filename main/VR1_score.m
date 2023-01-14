@@ -42,4 +42,4 @@ title('VR + variance')
 ylim([0, 70])
 h = gca;
 set(h, 'FontSize', 14)
-saveas(gcf,'VR1_score','epsc')
+saveas(gcf,'./data/figures/VR1_score','epsc')

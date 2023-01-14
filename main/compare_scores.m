@@ -57,4 +57,4 @@ ylabel('Average distance from the target line (cm)')
 title('Average Distances from the target line')
 h = gca;
 set(h, 'FontSize', 14)
-saveas(gcf,'score_all','epsc')
+saveas(gcf,'./data/figures/score_all','epsc')
