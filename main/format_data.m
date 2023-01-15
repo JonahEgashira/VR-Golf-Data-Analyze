@@ -12,6 +12,8 @@ REAL_number = REAL_file_size(1);
 
 trial_number = 20;
 practice_sets = 9;
+test_sets = 3;
+all_sets = practice_sets + test_sets;
 target_scores = 200 * ones(1, 20);
 
 VR0_0h = zeros(trial_number, VR0_number);
@@ -38,6 +40,9 @@ VR0_practice = zeros(trial_number, practice_sets);
 VR1_practice = zeros(trial_number, practice_sets);
 REAL_practice = zeros(trial_number, practice_sets);
 
+VR0_all = zeros(trial_number, practice_sets + test_sets);
+VR1_all = zeros(trial_number, practice_sets + test_sets);
+REAL_all = zeros(trial_number, practice_sets + test_sets);
 
 % DATA INPUT %
 for i = 1:VR0_number
@@ -56,6 +61,12 @@ for i = 1:VR0_number
 
     practice = abs(data(1:trial_number, 2:10)) * 100;
     VR0_practice(:,:,i) = practice;
+    all_scores = zeros(trial_number, practice_sets + test_sets);
+    all_scores(1:trial_number, 2:10) = practice;
+    all_scores(1:trial_number, 1:1) = scores_0h;
+    all_scores(1:trial_number, 11:11) = scores_6h;
+    all_scores(1:trial_number, 12:12) = scores_24h;
+    VR0_all(:,:,i) = all_scores;
 end
 
 for i = 1:VR1_number
@@ -74,6 +85,12 @@ for i = 1:VR1_number
 
     practice = abs(data(1:trial_number, 2:10)) * 100;
     VR1_practice(:,:,i) = practice;
+    all_scores = zeros(trial_number, practice_sets + test_sets);
+    all_scores(1:trial_number, 2:10) = practice;
+    all_scores(1:trial_number, 1:1) = scores_0h;
+    all_scores(1:trial_number, 11:11) = scores_6h;
+    all_scores(1:trial_number, 12:12) = scores_24h;
+    VR1_all(:,:,i) = all_scores;
 end
 
 for i = 1:REAL_number
@@ -90,8 +107,14 @@ for i = 1:REAL_number
     REAL_6h_diff(1:trial_number, i:i) = scores_6h - target_scores';
     REAL_24h_diff(1:trial_number, i:i) = scores_24h - target_scores';
 
-    practice = abs(data(1:trial_number, 2:10)) * 100;
+    practice = abs(data(1:trial_number, 2:10));
     REAL_practice(:,:,i) = practice;
+    all_scores = zeros(trial_number, practice_sets + test_sets);
+    all_scores(1:trial_number, 2:10) = practice;
+    all_scores(1:trial_number, 1:1) = scores_0h;
+    all_scores(1:trial_number, 11:11) = scores_6h;
+    all_scores(1:trial_number, 12:12) = scores_24h;
+    REAL_all(:,:,i) = all_scores;
 end
 
 % RESULTS %

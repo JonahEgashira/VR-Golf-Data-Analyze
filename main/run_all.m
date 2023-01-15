@@ -16,4 +16,12 @@ run('VR0_test')
 run('VR1_test')
 run('REAL_test')
 
+run('VR0_practice_sets')
+run('VR1_practice_sets')
+run('REAL_practice_sets')
+
+run('VR0_all_sets')
+run('VR1_all_sets')
+run('REAL_all_sets')
+
 close all
