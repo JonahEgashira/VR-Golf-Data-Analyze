@@ -24,4 +24,8 @@ run('VR0_all_sets')
 run('VR1_all_sets')
 run('REAL_all_sets')
 
+run('VR0_all_trials')
+run('VR1_all_trials')
+run('REAL_all_trials')
+
 close all

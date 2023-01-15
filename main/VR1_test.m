@@ -48,6 +48,7 @@ for hour = 1:3
     xlabel('Trials')
     ylabel('Distance from the target line (cm)')
     ylim([0, 140])
+    xticks(0:1:trial_number)
     h = gca;
     set(h, 'FontSize', 14)
 

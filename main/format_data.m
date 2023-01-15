@@ -11,9 +11,11 @@ VR1_number = VR1_file_size(1);
 REAL_number = REAL_file_size(1);
 
 trial_number = 20;
+reactivation_number = 10;
 practice_sets = 9;
 test_sets = 3;
 all_sets = practice_sets + test_sets;
+all_trials = (practice_sets - 1 + test_sets) * trial_number + reactivation_number; 
 target_scores = 200 * ones(1, 20);
 
 VR0_0h = zeros(trial_number, VR0_number);
