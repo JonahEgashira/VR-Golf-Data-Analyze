@@ -47,4 +47,4 @@ for i = 1:all_sets
 end
 
 
-saveas(gcf, './data/figures/VR1_all_trials', 'epsc')
+saveas(gcf, './data/figures/all_trials/VR1_all_trials', 'epsc')

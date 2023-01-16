@@ -43,4 +43,4 @@ ylim([0, 70])
 xlabel('Trial Sets')
 ylabel('Distance from the target line (cm)')
 
-saveas(gcf, './data/figures/REAL_all_sets', 'epsc')
+saveas(gcf, './data/figures/all_sets/REAL_all_sets', 'epsc')

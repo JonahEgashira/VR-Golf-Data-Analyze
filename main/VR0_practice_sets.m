@@ -43,4 +43,4 @@ ylim([0, 60])
 xlabel('Practice Set')
 ylabel('Distance from the target line (cm)')
 
-saveas(gcf, './data/figures/VR0_practice_sets', 'epsc')
+saveas(gcf, './data/figures/practice_sets/VR0_practice_sets', 'epsc')

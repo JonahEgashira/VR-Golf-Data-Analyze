@@ -52,6 +52,6 @@ for hour = 1:3
     h = gca;
     set(h, 'FontSize', 14)
 
-    filePath = strcat('./data/figures/VR1_', time, '_test');
+    filePath = strcat('./data/figures/test_each_hour/VR1_', time, '_test');
     saveas(gcf, filePath,'epsc')
 end
