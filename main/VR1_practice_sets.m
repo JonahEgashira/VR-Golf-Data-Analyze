@@ -39,7 +39,7 @@ h = gca;
 set(h, 'FontSize', 14)
 
 title('VR + variance Practice Scores')
-ylim([0, 60])
+ylim([0, 70])
 xlabel('Practice Set')
 ylabel('Distance from the target line (cm)')
 

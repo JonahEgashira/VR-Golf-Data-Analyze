@@ -8,6 +8,9 @@ run('VR0_delta')
 run('VR1_delta')
 run('REAL_delta')
 
+run('deltas_6h')
+run('deltas_24h')
+
 run('VR0_score')
 run('VR1_score')
 run('REAL_score')
