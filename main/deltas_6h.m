@@ -5,7 +5,7 @@ x = reordercats(x, {'VR', 'VR + variance', 'Real'});
 
 y = means_0h_6h;
 
-b = bar(x, y, 'FaceColor', mid_gray);
+b = bar(x, y, 'FaceColor', light_gray);
 
 VR0_x = ones(VR0_number);
 VR1_x = ones(VR1_number) + 1;
