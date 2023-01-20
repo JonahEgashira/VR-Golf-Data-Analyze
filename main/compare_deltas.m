@@ -27,7 +27,7 @@ b(2).CData = dark_gray;
 
 %%%%%%%%%%%%%
 
-legend('Δ(6h - 0h)', 'Δ(24h - 0h)');
+legend('Δ(6h - 0h)', 'Δ(24h - 0h)', 'Location', 'northwest');
 ylabel('Score Improvements (%)')
 title('Average Improvement Rates')
 h = gca;
