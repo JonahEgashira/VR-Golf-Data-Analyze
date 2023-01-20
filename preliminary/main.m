@@ -65,10 +65,10 @@ b.CData(2,:) = dark_gray;
 %ytips = b.YEndPoints;
 %labels = string(b.YData);
 %text(xtips, ytips, labels, ...
-%    'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom', 'FontSize', 14)
+%    'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom', 'FontSize', 20)
 
 ylabel('Score')
 ylim([0, 30])
 
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)

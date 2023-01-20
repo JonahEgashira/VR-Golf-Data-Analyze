@@ -36,11 +36,11 @@ plot(x, y, '-o', ...
     'Color', dark_gray)
 
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 
 title('VR + variance Scores')
 ylim([0, 70])
 xlabel('Trial Sets')
-ylabel('Distance from the target line (cm)')
+ylabel('Distance (cm)')
 
 saveas(gcf, './data/figures/all_sets/VR1_all_sets', 'epsc')

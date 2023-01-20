@@ -53,8 +53,8 @@ b(3).CData = dark_gray;
 % hold off
 
 legend('0h', '6h', '24h');
-ylabel('Average distance from the target line (cm)')
-title('Average Distances from the target line')
+ylabel('Average Distance (cm)')
+title('Average Distance')
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 saveas(gcf,'./data/figures/score_all','epsc')

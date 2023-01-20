@@ -42,7 +42,7 @@ b.CData(3,:) = dark_gray;
 ylabel('Score')
 ylim([0, possibleScore])
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 xtips = b.XEndPoints;
 ytips = b.YEndPoints;
 labels = string(b.YData);

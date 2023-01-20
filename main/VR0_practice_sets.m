@@ -36,11 +36,11 @@ plot(x, y, '-o', ...
     'Color', dark_gray)
 
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 
 title('VR Practice Scores')
 ylim([0, 70])
 xlabel('Practice Set')
-ylabel('Distance from the target line (cm)')
+ylabel('Distance (cm)')
 
 saveas(gcf, './data/figures/practice_sets/VR0_practice_sets', 'epsc')

@@ -46,11 +46,11 @@ for hour = 1:3
     hold off
 
     xlabel('Trials')
-    ylabel('Distance from the target line (cm)')
+    ylabel('Distance (cm)')
     ylim([0, 140])
     xticks(0:1:trial_number)
     h = gca;
-    set(h, 'FontSize', 14)
+    set(h, 'FontSize', 20)
 
     filePath = strcat('./data/figures/test_each_hour/REAL_', time, '_test');
     saveas(gcf, filePath,'epsc')

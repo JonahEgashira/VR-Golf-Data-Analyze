@@ -37,5 +37,5 @@ ylabel('Score Improvement Rates (%)')
 title('VR + variance')
 ylim([-80, 80])
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 saveas(gcf,'./data/figures/deltas/VR1_delta','epsc')

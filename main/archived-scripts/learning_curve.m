@@ -73,7 +73,7 @@ function plotFigure(titleText, subjectName, xs, ys, trials, ...
     addLabels(is_VR)
     addLimits(is_VR, is_Test)
     h = gca;
-    set(h, 'FontSize', 16)
+    set(h, 'FontSize', 20)
     timeInfo = extractBefore(titleText, ' ');
     saveFileName = strcat(subjectName, '_practice_', timeInfo);
     if is_Test

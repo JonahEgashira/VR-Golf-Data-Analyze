@@ -38,9 +38,9 @@ b.CData(1,:) = light_gray;
 b.CData(2,:) = mid_gray;
 b.CData(3,:) = dark_gray;
 
-ylabel('Average distance from the target line (cm)')
+ylabel('Average Distance (cm)')
 title('VR')
 ylim([0, 70])
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 saveas(gcf,'./data/figures/scores/VR0_score','epsc')

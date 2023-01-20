@@ -24,5 +24,5 @@ ylabel('Improvement Rates Δ(6h - 0h)(%)')
 title('Improvement Rates Δ(6h - 0h)')
 ylim([-40, 70])
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 saveas(gcf,'./data/figures/deltas_each/deltas_6h','epsc')

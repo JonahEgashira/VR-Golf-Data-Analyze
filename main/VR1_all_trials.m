@@ -28,14 +28,14 @@ plot(x, y, '-o', ...
     'Color', dark_gray)
 
 h = gca;
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 
 title('VR + variance')
 ylim([0, 80])
 xlabel('Trials')
 xlim([0, all_trials + 9])
 xticks(0:10:all_trials + 9)
-ylabel('Distance from the target line (cm)')
+ylabel('Distance (cm)')
 
 xline_values = [20, 40, 60, 80, 100, 110, 130, 150, 170, 190, 210, 230];
 xline_str = {'0h test', 'P1', 'P2', 'P3', 'P4', 'Reac.', 'P5', 'P6', 'P7', 'P8', '6h test', '24h test'};

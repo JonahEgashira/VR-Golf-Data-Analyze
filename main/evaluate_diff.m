@@ -33,6 +33,6 @@ title('Difference between VR and REAL putter')
 legend('VR', 'REAL');
 h = gca;
 ylim([100, 320])
-set(h, 'FontSize', 14)
+set(h, 'FontSize', 20)
 
 saveas(gcf, './data/figures/evaluate_diff', 'epsc')
