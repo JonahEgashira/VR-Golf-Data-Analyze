@@ -38,7 +38,7 @@ plot(x, y, '-o', ...
 h = gca;
 set(h, 'FontSize', 20)
 
-title('VR Scores')
+title('Scores for each sets (VR)')
 ylim([0, 70])
 xlabel('Trial Sets')
 ylabel('Distance (cm)')

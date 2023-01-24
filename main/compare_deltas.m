@@ -15,21 +15,22 @@ b(2).CData = dark_gray;
 
 % ERRORBARS %
 
-% hold on
-% [ngroups, nbars] = size(y');
-% err_x = nan(nbars, ngroups);
-% for i = 1:nbars
-%     err_x(i,:) = b(i).XEndPoints;
-% end
+hold on
+[ngroups, nbars] = size(y');
+err_x = nan(nbars, ngroups);
+for i = 1:nbars
+    err_x(i,:) = b(i).XEndPoints;
+end
 
-% errorbar(err_x', y', std_y', 'k', 'linestyle', 'none');
-% hold off
+errorbar(err_x', y', std_y', 'k', 'linestyle', 'none', 'LineWidth', 1);
+hold off
 
 %%%%%%%%%%%%%
 
 legend('Δ(6h - 0h)', 'Δ(24h - 0h)', 'Location', 'northwest');
 ylabel('Score Improvements (%)')
 title('Average Improvement Rates')
+ylim([-20, 70])
 h = gca;
 set(h, 'FontSize', 20)
 saveas(gcf,'./data/figures/delta_all','epsc')

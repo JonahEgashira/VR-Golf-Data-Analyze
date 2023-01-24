@@ -38,7 +38,7 @@ plot(x, y, '-o', ...
 h = gca;
 set(h, 'FontSize', 20)
 
-title('Real Scores')
+title('Scores for each sets (Real)')
 ylim([0, 70])
 xlabel('Trial Sets')
 ylabel('Distance (cm)')

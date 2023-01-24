@@ -42,15 +42,15 @@ b(1).CData = light_gray;
 b(2).CData = mid_gray;
 b(3).CData = dark_gray;
 
-% hold on
-% [ngroups, nbars] = size(y');
-% err_x = nan(nbars, ngroups);
-% for i = 1:nbars
-%     err_x(i,:) = b(i).XEndPoints;
-% end
-% 
-% errorbar(err_x', y, std_y', 'k', 'linestyle', 'none', 'LineWidth', 1, 'CapSize', 8);
-% hold off
+hold on
+[ngroups, nbars] = size(y');
+err_x = nan(nbars, ngroups);
+for i = 1:nbars
+    err_x(i,:) = b(i).XEndPoints;
+end
+
+errorbar(err_x', y, std_y', 'k', 'linestyle', 'none', 'LineWidth', 1, 'CapSize', 8);
+hold off
 
 legend('0h', '6h', '24h');
 ylabel('Average Distance (cm)')
